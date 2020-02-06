@@ -1,0 +1,5 @@
+/app/[^\\]*/es6
+/app/[^\\]*/nodejs
+/app/[^\\]*/php
+/node_modules
+/web/assets

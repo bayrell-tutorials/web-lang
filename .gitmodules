@@ -1,0 +1,9 @@
+[submodule "compiler"]
+	path = compiler
+	url = https://github.com/bayrell/compiler_nodejs
+[submodule "lib/Runtime"]
+	path = lib/Runtime
+	url = https://github.com/bayrell/Runtime
+[submodule "lib/Bayrell.Lang"]
+	path = lib/Bayrell.Lang
+	url = https://github.com/bayrell/Bayrell.Lang

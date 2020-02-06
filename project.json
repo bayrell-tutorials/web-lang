@@ -1,0 +1,6 @@
+{
+	"name": "Test lang",
+	"modules": [
+		"/lib"
+	]
+}
