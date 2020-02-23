@@ -3,3 +3,4 @@
 /app/[^\\]*/php
 /node_modules
 /web/assets
+/web/prg.bay
