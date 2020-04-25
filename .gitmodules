@@ -1,6 +1,9 @@
 [submodule "compiler"]
 	path = compiler
 	url = https://github.com/bayrell/compiler_nodejs
+[submodule "compiler.new"]
+	path = compiler.new
+	url = https://github.com/bayrell/compiler_nodejs
 [submodule "lib/Runtime"]
 	path = lib/Runtime
 	url = https://github.com/bayrell/Runtime
