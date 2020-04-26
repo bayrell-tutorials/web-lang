@@ -81,9 +81,9 @@ body{ margin: 0; padding: 0; }
 		try
 		{
 			var parser = new Bayrell.Lang.LangBay.ParserBay();
-			var translator = new Bayrell.Lang.LangES6.TranslatorES6();
+			//var translator = new Bayrell.Lang.LangES6.TranslatorES6();
 			//var translator = new Bayrell.Lang.LangNode.TranslatorNode();
-			//var translator = new Bayrell.Lang.LangPHP.TranslatorPHP();
+			var translator = new Bayrell.Lang.LangPHP.TranslatorPHP();
 			
 			if (is_context)
 			{
