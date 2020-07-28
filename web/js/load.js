@@ -27,7 +27,6 @@ $load([
 	"/assets/Runtime/es6/CoreObject.js",
 ])
 .load([
-	"/assets/Runtime/es6/Interfaces/LocalBusInterface.js",
 	"/assets/Runtime/es6/Interfaces/ModuleDescriptionInterface.js",
 	"/assets/Runtime/es6/Interfaces/SerializeInterface.js",
 	"/assets/Runtime/es6/Interfaces/StringInterface.js",
@@ -35,22 +34,18 @@ $load([
 .load([
 	"/assets/Runtime/es6/Collection.js",
 	"/assets/Runtime/es6/CoreStruct.js",
-	"/assets/Runtime/es6/FakeStruct.js",
 	"/assets/Runtime/es6/Dict.js",
 ])
 .load([
 	"/assets/Runtime/es6/RuntimeConstant.js",
 	"/assets/Runtime/es6/RuntimeUtils.js",
 	"/assets/Runtime/es6/Exceptions/RuntimeException.js",
-	"/assets/Runtime/es6/BusResult.js",
 	"/assets/Runtime/es6/Message.js",
-	"/assets/Runtime/es6/PathInfo.js",
 	"/assets/Runtime/es6/ModuleDescription.js",
 	"/assets/Runtime/es6/Monad.js",
 	"/assets/Runtime/es6/Reference.js",
 	"/assets/Runtime/es6/DateTime.js",
 	"/assets/Runtime/es6/Annotations/Entity.js",
-	"/assets/Runtime/es6/UIStruct.js",
 ])
 .load([
 	"/assets/Runtime/es6/CoreProvider.js",

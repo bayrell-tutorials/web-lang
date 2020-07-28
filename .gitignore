@@ -1,6 +1,7 @@
 /app/[^\\]*/es6
 /app/[^\\]*/nodejs
 /app/[^\\]*/php
+/compiler.test
 /node_modules
 /web/assets
 /web/prg.bay

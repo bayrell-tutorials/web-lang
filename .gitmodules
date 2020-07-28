@@ -10,3 +10,12 @@
 [submodule "lib/Bayrell.Lang"]
 	path = lib/Bayrell.Lang
 	url = https://github.com/bayrell/Bayrell.Lang
+[submodule "lib/Runtime.Task"]
+	path = lib/Runtime.Task
+	url = https://github.com/bayrell/Runtime.Task
+[submodule "lib/Runtime.Core"]
+	path = lib/Runtime.Core
+	url = https://github.com/bayrell/Runtime.Core
+[submodule "lib/Bayrell.Bundler"]
+	path = lib/Bayrell.Bundler
+	url = https://github.com/bayrell/Bayrell.Bundler

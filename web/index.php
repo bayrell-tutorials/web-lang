@@ -44,6 +44,8 @@ body{ margin: 0; padding: 0; }
 
 <script>
 	
+	window['use'] = function(s){ return Runtime.rtl.find_class(s); }
+	
 	$.ajax({
 		'url': '/prg.bay',
 		'cache': false,
@@ -81,7 +83,10 @@ body{ margin: 0; padding: 0; }
 		try
 		{
 			var parser = new Bayrell.Lang.LangBay.ParserBay();
-			//var translator = new Bayrell.Lang.LangES6.TranslatorES6();
+			var translator = new Bayrell.Lang.LangES6.TranslatorES6
+			(
+				context, { "use_module_name": false, "use_strict": false }
+			);
 			//var translator = new Bayrell.Lang.LangNode.TranslatorNode();
 			var translator = new Bayrell.Lang.LangPHP.TranslatorPHP();
 			
