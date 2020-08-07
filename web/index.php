@@ -74,7 +74,7 @@ body{ margin: 0; padding: 0; }
 		*/
 		
 		// Register global context
-		context = Runtime.Context.create(null);
+		context = Runtime.Core.Context.create(null);
 		Runtime.RuntimeUtils.setContext(context);
 		context = context.constructor.init(context, context);
 		/*context = Runtime.rtl.applyAwait(context.constructor.start, [ context ]);*/
@@ -83,12 +83,20 @@ body{ margin: 0; padding: 0; }
 		try
 		{
 			var parser = new Bayrell.Lang.LangBay.ParserBay();
-			var translator = new Bayrell.Lang.LangES6.TranslatorES6
+			var translator_es6 = new Bayrell.Lang.LangES6.TranslatorES6
 			(
-				context, { "use_module_name": false, "use_strict": false }
+				context, { "use_module_name": false, "use_strict": false, "emulate_async_await": true }
 			);
-			//var translator = new Bayrell.Lang.LangNode.TranslatorNode();
-			var translator = new Bayrell.Lang.LangPHP.TranslatorPHP();
+			var translator_node = new Bayrell.Lang.LangNode.TranslatorNode
+			(
+				context, { "use_module_name": true, "enable_async_await": true, "emulate_async_await": false }
+			);
+			var translator_php = new Bayrell.Lang.LangPHP.TranslatorPHP();
+			
+			/* Select translator */
+			//var translator = translator_es6;
+			var translator = translator_node;
+			//var translator = translator_php;
 			
 			if (is_context)
 			{

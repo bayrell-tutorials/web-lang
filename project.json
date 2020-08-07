@@ -1,6 +1,24 @@
 {
 	"name": "Test lang",
-	"modules": [
+	"cache": "var/bundler",
+	"plugins":
+	[
+		"Bayrell.Bundler.Plugins.BayLang"
+	],
+	"modules":
+	[
 		"/lib"
-	]
+	],
+	"languages": ["php", "es6", "nodejs"],
+	"entry": "src/index.html",
+	"output": "web",
+	"watch":
+	{
+		"dir":
+		[
+			"lib",
+			"src"
+		],
+		"timeout": 500
+	}
 }

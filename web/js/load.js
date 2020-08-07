@@ -28,8 +28,6 @@ $load([
 ])
 .load([
 	"/assets/Runtime/es6/Interfaces/ModuleDescriptionInterface.js",
-	"/assets/Runtime/es6/Interfaces/SerializeInterface.js",
-	"/assets/Runtime/es6/Interfaces/StringInterface.js",
 ])
 .load([
 	"/assets/Runtime/es6/Collection.js",
@@ -37,28 +35,18 @@ $load([
 	"/assets/Runtime/es6/Dict.js",
 ])
 .load([
-	"/assets/Runtime/es6/RuntimeConstant.js",
 	"/assets/Runtime/es6/RuntimeUtils.js",
 	"/assets/Runtime/es6/Exceptions/RuntimeException.js",
-	"/assets/Runtime/es6/Message.js",
 	"/assets/Runtime/es6/ModuleDescription.js",
 	"/assets/Runtime/es6/Monad.js",
 	"/assets/Runtime/es6/Reference.js",
 	"/assets/Runtime/es6/DateTime.js",
-	"/assets/Runtime/es6/Annotations/Entity.js",
 ])
 .load([
-	"/assets/Runtime/es6/CoreProvider.js",
-	"/assets/Runtime/es6/CoreEvent.js",
 	"/assets/Runtime/es6/Map.js",
-	"/assets/Runtime/es6/MessageRPC.js",
 	"/assets/Runtime/es6/Vector.js",
 	"/assets/Runtime/es6/Annotations/IntrospectionClass.js",
 	"/assets/Runtime/es6/Annotations/IntrospectionInfo.js",
-	"/assets/Runtime/es6/Annotations/LambdaChain.js",
-	"/assets/Runtime/es6/Annotations/LambdaChainDeclare.js",
-	"/assets/Runtime/es6/Annotations/Driver.js",
-	"/assets/Runtime/es6/Annotations/Provider.js",
 	"/assets/Runtime/es6/Exceptions/ApiException.js",
 	"/assets/Runtime/es6/Exceptions/IndexOutOfRange.js",
 	"/assets/Runtime/es6/Exceptions/KeyNotFound.js",
@@ -66,7 +54,6 @@ $load([
 ])
 .load([
 	"/assets/Runtime/es6/AsyncAwait.js",
-	"/assets/Runtime/es6/Context.js",
 ])
 .success(function(){
 	$load.deliver('Runtime_loaded');
@@ -75,6 +62,9 @@ $load([
 
 $load
 .subscribe(['Runtime_loaded'])
+.load([
+	"/assets/Runtime.Core/es6/Context.js",
+])
 .load([
 	"/assets/Bayrell.Lang/es6/Caret.js",
 	"/assets/Bayrell.Lang/es6/CoreParser.js",

@@ -2,6 +2,8 @@
 /app/[^\\]*/nodejs
 /app/[^\\]*/php
 /compiler.test
+/var
 /node_modules
 /web/assets
 /web/prg.bay
+test.js
