@@ -1,0 +1,53 @@
+<module name="Test.IndexPage" extends="Runtime.Web.Component">
+
+<use name="Runtime.Web.Button.Button" />
+<use name="Runtime.Web.Dialog.DialogModel" />
+<use name="Runtime.Web.Events.KeyDownEvent" />
+<use name="Runtime.Web.Events.MouseClickEvent" />
+<use name="Test.IndexPageModel" />
+
+<style>
+.content{
+	text-align: center;
+	padding-top: 50px;
+}
+.label{
+	padding-bottom: 5px;
+}
+.input{
+	padding: 5px 10px;
+}
+.button{
+	cursor: pointer;
+}
+</style>
+
+
+<template name="render" args="var layout_model, var model">
+	<div class='content'>
+		<div class='label'>@{ model.content }</div>
+		<input class='input' @bind="content" /><br/>
+		<button class='button' @event:MouseClickEvent='onMouseClick'>Click Me!</button>
+		{ static::items(layout_model, model) }
+	</div>
+</template>
+
+
+<template name="items" args="var layout_model, var model">
+</template>
+
+
+<script type="frontend">
+
+/**
+ * Mouse click event
+ */
+void onMouseClick(MouseClickEvent e)
+{
+	IndexPageModel model = this.model();
+	this.commit("update", { "content": model.content ~ "!" });
+}
+
+</script>
+
+</module>

@@ -110,6 +110,8 @@ $load
 	"/assets/Bayrell.Lang/es6/OpCodes/OpCollection.js",
 	"/assets/Bayrell.Lang/es6/OpCodes/OpComment.js",
 	"/assets/Bayrell.Lang/es6/OpCodes/OpContinue.js",
+	"/assets/Bayrell.Lang/es6/OpCodes/OpCurry.js",
+	"/assets/Bayrell.Lang/es6/OpCodes/OpCurryArg.js",
 	"/assets/Bayrell.Lang/es6/OpCodes/OpDeclareClass.js",
 	"/assets/Bayrell.Lang/es6/OpCodes/OpDeclareFunction.js",
 	"/assets/Bayrell.Lang/es6/OpCodes/OpDeclareFunctionArg.js",

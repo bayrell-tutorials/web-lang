@@ -94,8 +94,8 @@ body{ margin: 0; padding: 0; }
 			var translator_php = new Bayrell.Lang.LangPHP.TranslatorPHP();
 			
 			/* Select translator */
-			//var translator = translator_es6;
-			var translator = translator_node;
+			var translator = translator_es6;
+			//var translator = translator_node;
 			//var translator = translator_php;
 			
 			if (is_context)
