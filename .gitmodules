@@ -19,3 +19,6 @@
 [submodule "lib/Bayrell.Bundler"]
 	path = lib/Bayrell.Bundler
 	url = https://github.com/bayrell/Bayrell.Bundler
+[submodule "lib/Runtime.Web"]
+	path = lib/Runtime.Web
+	url = https://github.com/bayrell/Runtime.Web

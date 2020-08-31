@@ -1,0 +1,39 @@
+namespace App;
+
+use Runtime.Web.Route;
+use Runtime.Web.RenderContainer;
+use App.IndexPage;
+use App.IndexPageModel;
+
+
+@RouteList{}
+static class Routes
+{
+	
+	/**
+	 * Route Action
+	 * @return WebContainer
+	 */
+	@Route{ "uri": "/" }
+	static async RenderContainer IndexPage(RenderContainer container)
+	{
+		IndexPageModel model = new IndexPageModel
+		{
+			"item":
+			{
+				"content": "Hello world",
+			}
+		};
+		
+		/* Set title */
+		container <= layout <= title <= "Hello world !!!";
+		
+		/* Create model */
+		container <= layout <= page_class <= classof IndexPage;
+		container <= layout <= page_model <= model;
+		
+		return container;
+	}
+	
+	
+}

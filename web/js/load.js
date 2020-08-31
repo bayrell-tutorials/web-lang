@@ -24,14 +24,14 @@ $load([
 	"/assets/Runtime/es6/rs.js",
 	"/assets/Runtime/es6/re.js",
 	"/assets/Runtime/es6/lib.js",
-	"/assets/Runtime/es6/CoreObject.js",
+	"/assets/Runtime/es6/BaseObject.js",
 ])
 .load([
 	"/assets/Runtime/es6/Interfaces/ModuleDescriptionInterface.js",
 ])
 .load([
 	"/assets/Runtime/es6/Collection.js",
-	"/assets/Runtime/es6/CoreStruct.js",
+	"/assets/Runtime/es6/BaseStruct.js",
 	"/assets/Runtime/es6/Dict.js",
 ])
 .load([
@@ -39,6 +39,7 @@ $load([
 	"/assets/Runtime/es6/Exceptions/RuntimeException.js",
 	"/assets/Runtime/es6/ModuleDescription.js",
 	"/assets/Runtime/es6/Monad.js",
+	"/assets/Runtime/es6/Mutex.js",
 	"/assets/Runtime/es6/Reference.js",
 	"/assets/Runtime/es6/DateTime.js",
 ])
@@ -64,8 +65,10 @@ $load
 .subscribe(['Runtime_loaded'])
 .load([
 	"/assets/Runtime.Core/es6/Context.js",
+	"/assets/Runtime.Core/es6/CoreObject.js",
 ])
 .load([
+	"/assets/Runtime.Core/es6/ObjectManager.js",
 	"/assets/Bayrell.Lang/es6/Caret.js",
 	"/assets/Bayrell.Lang/es6/CoreParser.js",
 	"/assets/Bayrell.Lang/es6/CoreToken.js",
@@ -142,6 +145,7 @@ $load
 	"/assets/Bayrell.Lang/es6/OpCodes/OpPreprocessorIfDef.js",
 	"/assets/Bayrell.Lang/es6/OpCodes/OpPreprocessorSwitch.js",
 	"/assets/Bayrell.Lang/es6/OpCodes/OpReturn.js",
+	"/assets/Bayrell.Lang/es6/OpCodes/OpSafe.js",
 	"/assets/Bayrell.Lang/es6/OpCodes/OpString.js",
 	"/assets/Bayrell.Lang/es6/OpCodes/OpTernary.js",
 	"/assets/Bayrell.Lang/es6/OpCodes/OpThrow.js",

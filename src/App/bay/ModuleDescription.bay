@@ -1,0 +1,193 @@
+namespace App;
+
+use Runtime.Interfaces.AssetsInterface;
+use Runtime.Interfaces.ModuleDescriptionInterface;
+use Runtime.Core.Context;
+use Runtime.Core.Driver;
+use Runtime.Core.Entity;
+use Runtime.Core.LambdaChain;
+use Runtime.Web.Layout;
+use Runtime.Web.LayoutModel;
+use Runtime.Web.RenderController;
+use Runtime.Web.RenderDriver;
+use Runtime.Web.RouteController;
+use App.AppLayout;
+use App.IndexPage;
+use App.IndexPageModel;
+
+
+class ModuleDescription implements ModuleDescriptionInterface, AssetsInterface
+{
+	
+	/**
+	 * Returns module name
+	 * @return string
+	 */
+	pure string getModuleName() => "App";
+	
+	
+	
+	/**
+	 * Returns module name
+	 * @return string
+	 */
+	pure string getModuleVersion() => "0.0.1";
+	
+	
+	
+	/**
+	 * Returns required modules
+	 * @return Map<string>
+	 */
+	pure Map<string> requiredModules() => 
+	{
+		"Runtime.Web": "*",
+		
+		/* Backend */
+		#ifdef BACKEND then
+		'Runtime.Web.Backend': '*',
+		#endif
+	};
+	
+	
+	
+	/**
+	 * Returns module files load order
+	 * @return Collection<string>
+	 */
+	pure Collection<string> assets() => 
+	[
+		'App/IndexPage',
+		'App/IndexPageModel',
+		'App/Routes',
+		'App/ModuleDescription',
+	];
+	
+	
+	
+	/**
+	 * Returns enities
+	 */
+	pure Collection<Dict> entities() => 
+	[
+		/* Register RenderController */
+		new Driver
+		{
+			"name": "root-controller",
+			"value": classof RenderController,
+			"params":
+			{
+				"selector": ".root",
+				"main_controller": true,
+				"window": "RootController",
+			}
+		},
+		
+		/* Layout chain */
+		new LambdaChain
+		{
+			"name": RenderDriver::LAYOUT_CHAIN,
+			"pos": 10,
+			"value": "App.ModuleDescription::chainLayoutModel",
+		},
+		
+		/* Register RouteController */
+		new Driver{ "name": classof RouteController },
+		
+		/* Index page */
+		new Entity{ "name": "App.Routes" },
+	];
+	
+	
+	
+	/**
+	 * Returns sync loaded files
+	 */		
+	public static Collection<string> resources() => null;	
+	
+	
+	
+	/**
+	 * Layout chain
+	 */
+	pure LayoutModel chainLayoutModel(LayoutModel layout)
+	{
+		if (layout.layout_name == "default") layout <= layout_class <= classof AppLayout;
+		return [ layout ];
+	}
+	
+	
+	
+	
+	#ifdef FRONTEND then
+	
+	/**
+	 * Returns context settings
+	 * @return Dict<string>
+	 */
+	pure Dict<string> appSettings(Dict env) => 
+	{
+		"config":
+		{
+		},
+		"secrets":
+		{
+		},
+		"providers":
+		{
+		}
+	};
+	
+	
+	
+	/**
+	 * Init app
+	 */
+	static Context appInit(Context c)
+	{
+		return c::init(c);
+	}
+	
+	
+	
+	/**
+	 * Start app
+	 */
+	static async Context appStart(Context c)
+	{
+		return await c::start(c);
+	}
+	
+	
+	
+	/**
+	 * Run app
+	 */
+	static async void appRun()
+	{
+		RenderController render = @.getDriver("root-controller");
+		
+		IndexPageModel page_model = new IndexPageModel
+		{
+			"item":
+			{
+				"content": "Hello world",
+			}
+		};
+		
+		LayoutModel layout = new LayoutModel
+		{
+			"title": "Hello world!!!",
+			"page_class": classof IndexPage,
+			"page_model": page_model,
+		};
+		
+		render.renderLayout(layout);
+		
+		/* RenderDriver.renderPage("/"); */
+	}
+	
+	
+	#endif
+	
+}

@@ -1,0 +1,40 @@
+<!--This is comment-->
+<class version="1.0"
+	name="App.AppLayout" extends="Runtime.Web.Component" 
+	module="App" model="Runtime.Web.LayoutModel"
+>
+
+<style>
+*{box-sizing: border-box;}body{margin:0;padding:0;}
+a { text-decoration: inherit; color: #0000d0; cursor: pointer; }
+a:hover, a:visited:hover { text-decoration: underline; color: red; }
+a:visited { text-decoration: inherit; color: #0000d0; }
+a.link { text-decoration: none; color: #0000d0; cursor: pointer; }
+a.link:hover, a.link:visited:hover { text-decoration: underline; color: red; }
+a.link:visited { text-decoration: none; color: #0000d0; }
+body, html{
+	background-color: #F2F2F2;
+	font-family: 'Ubuntu', sans-serif;
+	font-size: 14px;
+	width: 100%;
+	padding: 0;
+	margin: 0;
+}
+%container{
+	max-width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+}
+</style>
+
+<!-- Render -->
+<template name="render">
+	%var string class_name = model.page_class;
+	<section class='section'>
+		<div class='container'>
+			<{class_name} @bind="page_model" @key="page"></{class_name}>
+		</div>
+	</section>
+</template>
+
+</class>

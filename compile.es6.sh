@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if false; then
+if true; then
 
 ./compiler.new/cli.js make Runtime es6
 ./compiler.new/cli.js make Runtime.Core es6

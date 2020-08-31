@@ -1,0 +1,19 @@
+{
+	"description": "Bayrell Lang Test Project",
+	"license": "Apache-2.0",
+	"contributors": [
+		{
+			"name": "Ildar Bikmamatov",
+			"email": "support@bayrell.org"
+		}
+	],
+	"dependencies": {
+		"inotify": "^1.4.6"
+	},
+	"devDependencies": {
+		"bayrell": "^0.10.0",
+		"inotify": "^1.4.6",
+		"path": "^0.12.7",
+		"shelljs": "^0.7.0"
+	}
+}
