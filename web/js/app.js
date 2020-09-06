@@ -58,7 +58,6 @@ Object.assign(App.AppLayout,
 			[__vnull, __v1_childs] = RenderDriver.e(__v1, __v1_childs, "component", {"name": class_name,"attrs": {"@bind":["App.AppLayout","page_model"],"@key":"page"}, "layout": layout});
 			RenderDriver.p(__v1, __v1_childs);
 			RenderDriver.p(__v0, __v0_childs);
-			RenderDriver.p(__control, __control_childs);
 			
 			return __control_childs;
 		};
@@ -80,7 +79,7 @@ Object.assign(App.AppLayout,
 	{
 		var Collection = Runtime.Collection;
 		var Dict = Runtime.Dict;
-		var IntrospectionInfo = Runtime.Annotations.IntrospectionInfo;
+		var IntrospectionInfo = Runtime.IntrospectionInfo;
 		return new IntrospectionInfo(ctx, {
 			"kind": IntrospectionInfo.ITEM_CLASS,
 			"class_name": "App.AppLayout",
@@ -99,7 +98,7 @@ Object.assign(App.AppLayout,
 	{
 		var Collection = Runtime.Collection;
 		var Dict = Runtime.Dict;
-		var IntrospectionInfo = Runtime.Annotations.IntrospectionInfo;
+		var IntrospectionInfo = Runtime.IntrospectionInfo;
 		return null;
 	},
 	getMethodsList: function(ctx)
@@ -132,7 +131,7 @@ Object.assign(App.IndexPage.prototype,
 	onMouseClick: async function(ctx, msg)
 	{
 		var model = this.model(ctx);
-		this.commit(ctx, "update", Runtime.Collection.from(["item","content"]), Runtime.rtl.attr(ctx, model, ["item", "content"]) + Runtime.rtl.toStr("!"));
+		this.updateModel(ctx, "setAttr", Runtime.Collection.from(["item","content"]), Runtime.rtl.attr(ctx, model, ["item", "content"]) + Runtime.rtl.toStr("!"));
 	},
 	assignObject: function(ctx,o)
 	{
@@ -209,7 +208,6 @@ Object.assign(App.IndexPage,
 				RenderDriver.p(__v4, __v4_childs);
 			}
 			RenderDriver.p(__v3, __v3_childs);
-			RenderDriver.p(__control, __control_childs);
 			
 			return __control_childs;
 		};
@@ -231,7 +229,7 @@ Object.assign(App.IndexPage,
 	{
 		var Collection = Runtime.Collection;
 		var Dict = Runtime.Dict;
-		var IntrospectionInfo = Runtime.Annotations.IntrospectionInfo;
+		var IntrospectionInfo = Runtime.IntrospectionInfo;
 		return new IntrospectionInfo(ctx, {
 			"kind": IntrospectionInfo.ITEM_CLASS,
 			"class_name": "App.IndexPage",
@@ -250,7 +248,7 @@ Object.assign(App.IndexPage,
 	{
 		var Collection = Runtime.Collection;
 		var Dict = Runtime.Dict;
-		var IntrospectionInfo = Runtime.Annotations.IntrospectionInfo;
+		var IntrospectionInfo = Runtime.IntrospectionInfo;
 		return null;
 	},
 	getMethodsList: function(ctx)
@@ -328,7 +326,7 @@ Object.assign(App.IndexPageModel,
 	{
 		var Collection = Runtime.Collection;
 		var Dict = Runtime.Dict;
-		var IntrospectionInfo = Runtime.Annotations.IntrospectionInfo;
+		var IntrospectionInfo = Runtime.IntrospectionInfo;
 		return new IntrospectionInfo(ctx, {
 			"kind": IntrospectionInfo.ITEM_CLASS,
 			"class_name": "App.IndexPageModel",
@@ -351,7 +349,7 @@ Object.assign(App.IndexPageModel,
 	{
 		var Collection = Runtime.Collection;
 		var Dict = Runtime.Dict;
-		var IntrospectionInfo = Runtime.Annotations.IntrospectionInfo;
+		var IntrospectionInfo = Runtime.IntrospectionInfo;
 		if (field_name == "item") return new IntrospectionInfo(ctx, {
 			"kind": IntrospectionInfo.ITEM_FIELD,
 			"class_name": "App.IndexPageModel",
@@ -509,7 +507,7 @@ Object.assign(App.ModuleDescription,
 	{
 		var Collection = Runtime.Collection;
 		var Dict = Runtime.Dict;
-		var IntrospectionInfo = Runtime.Annotations.IntrospectionInfo;
+		var IntrospectionInfo = Runtime.IntrospectionInfo;
 		return new IntrospectionInfo(ctx, {
 			"kind": IntrospectionInfo.ITEM_CLASS,
 			"class_name": "App.ModuleDescription",
@@ -528,7 +526,7 @@ Object.assign(App.ModuleDescription,
 	{
 		var Collection = Runtime.Collection;
 		var Dict = Runtime.Dict;
-		var IntrospectionInfo = Runtime.Annotations.IntrospectionInfo;
+		var IntrospectionInfo = Runtime.IntrospectionInfo;
 		return null;
 	},
 	getMethodsList: function(ctx)

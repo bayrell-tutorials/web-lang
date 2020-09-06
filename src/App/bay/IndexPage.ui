@@ -49,7 +49,7 @@
 async void onMouseClick(Message<MouseClickEvent> msg)
 {
 	IndexPageModel model = this.model();
-	this.commit("update", ["item", "content"], model["item", "content"] ~ "!");
+	this.updateModel("setAttr", ["item", "content"], model["item", "content"] ~ "!");
 }
 
 </script>

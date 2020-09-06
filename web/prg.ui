@@ -6,219 +6,22 @@
 <use name="Runtime.Core.Message" />
 <use name="Runtime.Web.LayoutModel" />
 <use name="Runtime.Web.Button.Button" component="true" />
-<use name="Runtime.Web.Dialog.Dialog" component="true" />
-<use name="Runtime.Web.Dialog.DialogEvent" />
-<use name="Runtime.Web.Events.ChangeEvent" />
-<use name="Runtime.Web.Events.MouseClickEvent" />
-<use name="Runtime.Web.Input.Input" component="true" />
-<use name="Example2.IndexPageModel" />
-<use name="Example2.Item" />
-
-<style>
-%content{
-	text-align: center;
-	padding-top: 20px;
-}
-%menu{
-	padding-bottom: 10px;
-}
-%list, %info{
-	display: inline-block;
-	vertical-align: top;
-	text-align: left;
-}
-%list{
-	width: 50%;
-	padding-right: 10px;
-}
-%info{
-	width: 50%;
-	padding-left: 10px;
-}
-%info_buttons{
-	padding-top: 5px;
-	text-align: center;
-}
-%field_label{
-	font-weight: bold;
-	padding-bottom: 5px;
-}
-%input{
-	width: 100%;
-	padding: 6px 12px;
-}
-%item{
-	padding: 10px;
-	cursor: pointer;
-	
-}
-%item.active{
-	background-color: blue;
-	color: white;
-}
-%item-content, %item %rm-button{
-	display: inline-block;
-	vertical-align: middle;
-}
-%item-content{
-	width: calc(100% - 80px);
-	padding-right: 5px;
-}
-%item %rm-button{
-	width: 80px;
-	text-align: right;
-}
-%item %rm-button button{
-	cursor: pointer;
-}
-</style>
+<use name="Runtime.Web.Table.TableModel" />
 
 
 <template name="render">
-	<div class='content'>
-		
-		<div class='menu'>
-			<Button @event:MouseClickEvent='onAddClick'>Add</Button>
-		</div>
-		
-		<div class='list'>
-		%for (int i=0; i<model.items.count(); i++)
+	<div class='container1'>
+		%for (int i=0; i<100; i++)
 		{
-			%var Item item = model.items[i];
-			<div class={ model.selected_index == i ? 'active' : '' ~ " item" } data-index={ i }
-				@event:MouseClickEvent='onItemClick'
-			>
-				<div class='item-content'>{ item.name }</div>
-				<div class='rm-button'>
-					<button @event:MouseClickEvent='onRemoveClick' data-index={ i }>
-						Remove
-					</button>
-				</div>
-			</div>
+			<div class='row'></div>
 		}
-		</div>
-		
-		<div class='info'>
-			<div class='field'>
-				<div class='field_label'>Name</div>
-				<div class='field_edit'>
-					<input field_name='name' @event:ChangeEvent='onInputChange' 
-						@model={ model.edit_item != null ? model.edit_item.name : "" }
-						attrs=@json{  {"field_name": "name"}  } class='input'
-					/>
-				</div>
-			</div>
-			<div class='info_buttons'>
-				<Button @event:MouseClickEvent='onSaveClick'>Save</Button>
-			</div>
-		</div>
-		
-		<Dialog @bind="dialog" @ref="dialog" style="promt" 
-			@event:DialogEvent="onDialogEvent"
-		/>
-		
+		<div class='row'>{ content }</div>
+	</div>
+	<div class='container2'>
+		<Button>
+			<span class='img' /> Add
+		</Button>
 	</div>
 </template>
-
-
-<script type="frontend">
-
-
-Dialog dialog = null;
-
-
-/**
- * Add click
- */
-async void onAddClick(Message<MouseClickEvent> msg)
-{
-	this.dialog.commit
-	(
-		"show",
-		{
-			"title": "Add new item",
-		}
-	);
-}
-
-
-
-/**
- * Input change
- */
-async void onInputChange(Message<ChangeEvent> msg)
-{
-	if (this.model.edit_item == null) return;
-	
-	string field_name = msg.data.target.@getAttribute("field_name");
-	string value = msg.data.value;
-	
-	Item edit_item = this.model.edit_item;
-	edit_item = edit_item.copy( (new Map()).set(field_name, value) );
-	
-	this.commit("update", "edit_item", edit_item);
-	/* log(this.model.selected_index); */
-}
-
-
-
-/**
- * Dialog event
- */
-async void onDialogEvent(Message<DialogEvent> msg)
-{
-	this.commit("update", "items", this.model.items.pushIm( new Item { "name": msg.data.input } ));
-}
-
-
-
-/**
- * On item click
- */
-async void onItemClick(Message<MouseClickEvent> msg)
-{
-	string index = msg.data.target.@getAttribute("data-index");
-	
-	/* log(this.model.items[0]); */
-	
-	this.commit("change", {
-		"selected_index": (int) index,
-		"edit_item": this.model.items.get(index, null),
-	});
-}
-
-
-/**
- * OnSave
- */
-async void onSaveClick(Message<MouseClickEvent> msg)
-{
-	int index = this.model.selected_index;
-	if (index < 0 or index >= this.model.items.count())
-	{
-		return;
-	}
-	
-	/* Edit item */
-	Item edit_item = this.model.edit_item;
-	this.commit("update", "items", this.model.items.setIm(index, edit_item));
-}
-
-
-
-/**
- * On Remove
- */
-async void onRemoveClick(Message<MouseClickEvent> msg)
-{
-	msg.cancel();
-	
-	int index = (int) msg.data.target.@getAttribute("data-index");
-	if (index == -1) return;
-	
-	/* Remove item */
-	this.commit("update", "items", this.model.items.removeIm(index));
-}
-</script>
 
 </class>

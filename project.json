@@ -1,7 +1,7 @@
 {
 	"name": "Test lang",
 	"cache": "var/bundler",
-	"build":
+	"bundles":
 	[
 		{
 			"dest": "web/js/runtime.js",
@@ -11,8 +11,15 @@
 				"Runtime",
 				"Runtime.Core",
 				"Runtime.Web"
-			],
-			"websocket": true
+			]
+		},
+		{
+			"dest": "web/js/lang.js",
+			"lang": "es6",
+			"modules":
+			[
+				"Bayrell.Lang"
+			]
 		},
 		{
 			"dest": "web/js/app.js",
@@ -32,9 +39,32 @@
 	"plugins":
 	[
 		"Bayrell.Bundler.Plugins.BayLang",
-		"Bayrell.Bundler.Plugins.Bundle"
+		"Bayrell.Bundler.Plugins.Bundle",
+		"Bayrell.Bundler.Plugins.FilesPHP",
+		"Bayrell.Bundler.Plugins.FilesES6",
+		"Bayrell.Bundler.Plugins.FilesJS"
 	],
 	"plugins_opts":
+	{
+		"Bayrell.Bundler.Plugins.BayLang":
+		{
+			"es6":
+			{
+				"use_module_name": false,
+				"use_strict": true,
+				"enable_async_await": true,
+				"emulate_async_await": false
+			},
+			"nodejs":
+			{
+				"use_module_name": true,
+				"use_strict": true,
+				"enable_async_await": true,
+				"emulate_async_await": false
+			}
+		}
+	},
+	"options":
 	{
 		"Bayrell.Bundler.Plugins.BayLang":
 		{
