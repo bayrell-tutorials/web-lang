@@ -1,27 +1,55 @@
+<!--
+ *  Faydell
+-->
+
 <class version="1.0"
-	name="Example2.IndexPage" extends="Runtime.Web.Component" 
-	module="Example2" model="Example2.IndexPageModel"
+	name="Faydell.Dialog" extends="Runtime.Web.Component" 
+	module="Faydell" model="Runtime.Dict"
 >
 
-<use name="Runtime.Core.Message" />
-<use name="Runtime.Web.LayoutModel" />
-<use name="Runtime.Web.Button.Button" component="true" />
-<use name="Runtime.Web.Table.TableModel" />
+<use class="Runtime.Web.Events.MouseClickEvent" />
+<use class="Box" />
 
-
-<template name="render">
-	<div class='container1'>
-		%for (int i=0; i<100; i++)
-		{
-			<div class='row'></div>
-		}
-		<div class='row'>{ content }</div>
+<template>
+	
+	<Box>@raw{ "123" }</Box>
+	<textarea>@raw{ "123" }</textarea>
+	
+	<div class="editor_dialog" @ref="dialog" style={{ "top": model["top"] ~ "px", "left": model["left"] ~ "px" }}>
+		
+		<div class="editor_dialog_title" @event:MouseClickEvent="onMouseClick">
+			<svg class="editor_image_drag" width="14px" height="6px" viewBox="0 0 14 6">
+				<circle fill='rgb(43,85,113)' cx='1.00' cy='1.00' r='1.00'></circle>
+				<circle fill='rgb(43,85,113)' cx='5.00' cy='1.00' r='1.00'></circle>
+				<circle fill='rgb(43,85,113)' cx='9.00' cy='1.00' r='1.00'></circle>
+				<circle fill='rgb(43,85,113)' cx='13.00' cy='1.00' r='1.00'></circle>
+				<circle fill='rgb(43,85,113)' cx='1.00' cy='5.00' r='1.00'></circle>
+				<circle fill='rgb(43,85,113)' cx='5.00' cy='5.00' r='1.00'></circle>
+				<circle fill='rgb(43,85,113)' cx='9.00' cy='5.00' r='1.00'></circle>
+				<circle fill='rgb(43,85,113)' cx='13.00' cy='5.00' r='1.00'></circle>
+			</svg>
+			<span class="editor_image_close">
+				<span class="glyphicon glyphicon-remove"></span>
+			</span>
+		</div>
+		
+		<div class="editor_content">
+		</div>
+		
+		<div class="editor_status_bar">
+			<svg class="editor_image_resize" width="14px" height="14px" viewBox="0 0 14 14">
+				<circle fill='rgb(43,85,113)' cx='9.00' cy='1.00' r='1.00'></circle>
+				<circle fill='rgb(43,85,113)' cx='5.00' cy='5.00' r='1.00'></circle>
+				<circle fill='rgb(43,85,113)' cx='9.00' cy='5.00' r='1.00'></circle>
+				<circle fill='rgb(43,85,113)' cx='1.00' cy='9.00' r='1.00'></circle>
+				<circle fill='rgb(43,85,113)' cx='5.00' cy='9.00' r='1.00'></circle>
+				<circle fill='rgb(43,85,113)' cx='9.00' cy='9.00' r='1.00'></circle>
+			</svg>
+		</div>
+		
 	</div>
-	<div class='container2'>
-		<Button>
-			<span class='img' /> Add
-		</Button>
-	</div>
+	
 </template>
+
 
 </class>

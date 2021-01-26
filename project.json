@@ -1,10 +1,31 @@
 {
 	"name": "Test lang",
 	"cache": "var/bundler",
+	"assets": "assets/",
 	"bundles":
 	[
 		{
-			"dest": "web/js/runtime.js",
+			"name": "core.js",
+			"dest": "assets/core.js",
+			"lang": "es6",
+			"modules":
+			[
+				"Runtime.Components.jQuery",
+				"Runtime.Components.AirDatepicker"
+			]
+		},
+		{
+			"name": "core.css",
+			"dest": "assets/core.css",
+			"lang": "css",
+			"modules":
+			[
+				"Runtime.Components.jQuery",
+				"Runtime.Components.AirDatepicker"
+			]
+		},
+		{
+			"dest": "assets/runtime.js",
 			"lang": "es6",
 			"modules":
 			[
@@ -14,7 +35,7 @@
 			]
 		},
 		{
-			"dest": "web/js/lang.js",
+			"dest": "assets/lang.js",
 			"lang": "es6",
 			"modules":
 			[
@@ -22,7 +43,7 @@
 			]
 		},
 		{
-			"dest": "web/js/app.js",
+			"dest": "assets/app.js",
 			"lang": "es6",
 			"modules":
 			[
@@ -44,26 +65,6 @@
 		"Bayrell.Bundler.Plugins.FilesES6",
 		"Bayrell.Bundler.Plugins.FilesJS"
 	],
-	"plugins_opts":
-	{
-		"Bayrell.Bundler.Plugins.BayLang":
-		{
-			"es6":
-			{
-				"use_module_name": false,
-				"use_strict": true,
-				"enable_async_await": true,
-				"emulate_async_await": false
-			},
-			"nodejs":
-			{
-				"use_module_name": true,
-				"use_strict": true,
-				"enable_async_await": true,
-				"emulate_async_await": false
-			}
-		}
-	},
 	"options":
 	{
 		"Bayrell.Bundler.Plugins.BayLang":
@@ -73,19 +74,24 @@
 				"use_module_name": false,
 				"use_strict": true,
 				"enable_async_await": true,
-				"emulate_async_await": false
+				"emulate_async_await": false,
+				"enable_check_types": false,
+				"enable_context": true,
+				"enable_introspection": true
 			},
 			"nodejs":
 			{
 				"use_module_name": true,
 				"use_strict": true,
 				"enable_async_await": true,
-				"emulate_async_await": false
+				"emulate_async_await": false,
+				"enable_check_types": false,
+				"enable_context": true,
+				"enable_introspection": true
 			}
 		}
 	},
 	"languages": ["php", "es6", "nodejs"],
-	"output": "web",
 	"watch":
 	{
 		"dir":

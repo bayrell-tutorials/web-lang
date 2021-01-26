@@ -3,9 +3,9 @@
 <head>
 <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />	
 
-<script src='/js/jquery.min.js'></script>
-<script src='/js/runtime.js'></script>
-<script src='/js/lang.js'></script>
+<script src='/assets/jquery.min.js'></script>
+<script src='/assets/runtime.js'></script>
+<script src='/assets/lang.js'></script>
 	
 <style>
 body{ margin: 0; padding: 0; }
@@ -24,7 +24,7 @@ body{ margin: 0; padding: 0; }
 .result--success{
 	color: green;
 }
-</style>	
+</style>
 	
 </head>
 
@@ -81,18 +81,31 @@ body{ margin: 0; padding: 0; }
 			var parser = new Bayrell.Lang.LangBay.ParserBay();
 			var translator_es6 = new Bayrell.Lang.LangES6.TranslatorES6
 			(
-				context, { "use_module_name": false, "use_strict": false, "emulate_async_await": true }
+				context,
+				{
+					"enable_context": false,
+					"enable_introspection": false,
+				}
 			);
 			var translator_node = new Bayrell.Lang.LangNode.TranslatorNode
 			(
-				context, { "use_module_name": true, "enable_async_await": true, "emulate_async_await": false }
+				context,
+				{
+				}
 			);
-			var translator_php = new Bayrell.Lang.LangPHP.TranslatorPHP();
+			var translator_php = new Bayrell.Lang.LangPHP.TranslatorPHP
+			(
+				context,
+				{
+					"enable_context": false,
+					"enable_introspection": true,
+				}
+			);
 			
 			/* Select translator */
-			//var translator = translator_es6;
+			var translator = translator_es6;
 			//var translator = translator_node;
-			var translator = translator_php;
+			//var translator = translator_php;
 			
 			if (is_context)
 			{
@@ -101,7 +114,7 @@ body{ margin: 0; padding: 0; }
 				var output = Bayrell.Lang.LangUtils.translate(context, translator, op_code);
 			}
 			else
-			{			
+			{
 				var op_code = Bayrell.Lang.LangUtils.parse(parser, data);
 				console.log(op_code);
 				var output = Bayrell.Lang.LangUtils.translate(translator, op_code);
